@@ -7,7 +7,25 @@ metadata:
     app: minio
 spec:
   port:
-    targetPort: 9090-tcp
+    targetPort: console
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: minio
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: minio-s3
+  labels:
+    app: minio
+spec:
+  port:
+    targetPort: api
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
