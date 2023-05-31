@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://git.jharmison.com/james/mufg.git'
-    path: rhods
+    path: demo
   syncPolicy:
     automated:
       prune: true
