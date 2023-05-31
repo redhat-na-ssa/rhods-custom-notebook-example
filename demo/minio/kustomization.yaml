@@ -10,8 +10,8 @@ commonLabels:
 secretGenerator:
 - name: minio-root-user
   literals:
-  - MINIO_ROOT_USER: admin
-  - MINIO_ROOT_PASSWORD: HvA3zAzZd5gLw2E-CRQYPlWaWnK7vy7n
+  - MINIO_ROOT_USER=admin
+  - MINIO_ROOT_PASSWORD=HvA3zAzZd5gLw2E-CRQYPlWaWnK7vy7n
 
 resources:
 - namespace.yml
