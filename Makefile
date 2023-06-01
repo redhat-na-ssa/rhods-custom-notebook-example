@@ -7,6 +7,11 @@ KUBECONFIG = /tmp/mufg
 .PHONY: all
 all: bootstrap
 
+.PHONY: login
+login:
+	rm -f $(KUBECONFIG)
+	$(MAKE) $(KUBECONFIG)
+
 $(KUBECONFIG): creds.env
 	@source creds.env; oc login -u "$$USER" -p "$$PASSWORD" "$$CLUSTER"
 
