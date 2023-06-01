@@ -1,5 +1,4 @@
-FROM image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/
-
+FROM quay.io/modh/odh-generic-data-science-notebook:v2-2023a-20230322
 
 COPY Pipfile.lock /opt/app-root/bin/
 
