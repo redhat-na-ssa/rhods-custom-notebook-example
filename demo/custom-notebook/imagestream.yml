@@ -8,6 +8,7 @@ metadata:
       of the LightGBM libraries.
     opendatahub.io/notebook-image-name: LightGBM
     opendatahub.io/notebook-image-url: https://git.jharmison.com/james/mufg.git
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     opendatahub.io/dashboard: "true"
     opendatahub.io/notebook-image: "true"
