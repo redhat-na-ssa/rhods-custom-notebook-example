@@ -12,4 +12,6 @@ $(KUBECONFIG): creds.env
 
 .PHONY: bootstrap
 bootstrap: $(KUBECONFIG)
-	oc apply -k bootstrap
+	oc apply -k bootstrap/ || \
+		while [ "$$(oc get subscription.operators -n openshift-operators openshift-gitops-operator -ojsonpath='{.status.state}')" != "AtLatestKnown" ]; do sleep 5; done; oc apply -k bootstrap/ || \
+		while ! oc get namespace openshift-gitops; do sleep 5; done; oc apply -k bootstrap/
