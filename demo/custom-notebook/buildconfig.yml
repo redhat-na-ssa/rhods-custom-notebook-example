@@ -20,7 +20,7 @@ spec:
       from:
         kind: ImageStreamTag
         name: s2i-generic-data-science-notebook:2023.1
-      dockerFilePath: Containerfile
+      dockerfilePath: Containerfile
   output:
     to:
       kind: ImageStreamTag
