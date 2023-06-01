@@ -35,7 +35,13 @@ spec:
         - containerPort: 9090
           protocol: TCP
           name: console
-        resources: {}
+        resources:
+          requests:
+            cpu: 200m
+            memory: 1Gi
+          limits:
+            cpu: 2
+            memory: 2Gi
         volumeMounts:
         - mountPath: /data
           name: minio
