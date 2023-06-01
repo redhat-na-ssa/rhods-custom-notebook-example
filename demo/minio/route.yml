@@ -5,6 +5,8 @@ metadata:
   name: minio-console
   labels:
     app: minio
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   port:
     targetPort: console
@@ -23,6 +25,8 @@ metadata:
   name: minio-s3
   labels:
     app: minio
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   port:
     targetPort: api
