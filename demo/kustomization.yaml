@@ -8,4 +8,4 @@ commonLabels:
 resources:
 - rhods
 - minio
-- custom-notebook
+- custom-notebook-image
