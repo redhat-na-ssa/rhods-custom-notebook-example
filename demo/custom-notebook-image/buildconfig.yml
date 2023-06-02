@@ -16,7 +16,7 @@ spec:
   source:
     git:
       uri: https://git.jharmison.com/james/mufg.git
-    contextDir: demo/custom-notebook
+    contextDir: demo/custom-notebook-image
   strategy:
     dockerStrategy:
       from:
