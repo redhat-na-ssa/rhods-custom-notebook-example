@@ -73,6 +73,8 @@ spec:
         volumeMounts:
         - mountPath: /opt/app-root/src
           name: demo-lightgbm-workbench
+        - mountPath: /dev/shm
+          name: shm
         workingDir: /opt/app-root/src
       - args:
         - --provider=openshift
@@ -147,3 +149,7 @@ spec:
         secret:
           defaultMode: 420
           secretName: demo-lightgbm-workbench-tls
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 2Gi
