@@ -9,3 +9,4 @@ resources:
 - rhods
 - minio
 - custom-notebook-image
+- custom-notebook-instance

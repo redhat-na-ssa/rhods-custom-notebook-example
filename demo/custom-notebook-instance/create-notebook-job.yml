@@ -1,0 +1,60 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-lightgbm-notebook
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      serviceAccount: demo-lightgbm-workbench
+      serviceAccountName: demo-lightgbm-workbench
+      initContainers:
+      - name: wait-for-envsubst
+        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+        command: ["/bin/bash"]
+        args:
+        - -c
+        - |-
+          echo -n Waiting for envsubst image build to finish
+          while ! oc get istag |& grep -qF envsubst:latest; do
+            echo -n .
+            sleep 5
+          done
+          echo
+      containers:
+      - name: create-notebook
+        image: image-registry.openshift-image-registry.svc:5000/mufg-demo/envsubst:latest
+        imagePullPolicy: Always
+        command: ["/bin/bash"]
+        args:
+        - -ec
+        - |-
+          echo -n Waiting for LightGBM image build to finish
+          while ! oc get istag -n redhat-ods-applications |& grep -qF lightgbm; do
+            echo -n .
+            sleep 5
+          done
+          echo
+          # Set the cookie secret randomly
+          cookie_secret=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32)
+          # Recover the tag from the LightGBM ImageStream
+          LIGHTGBM_TAG=$(oc get istag -n redhat-ods-applications -l component=lightgbm-notebook-image -ojsonpath='{.items[0].metadata.name}')
+          # Recover the route URL for the RHODS dashboard
+          RHODS_DASHBOARD_URL=$(oc get route -n redhat-ods-applications rhods-dashboard -ojsonpath='{.status.ingress[0].host}')
+          # Export all vars for envsubst
+          export LIGHTGBM_TAG
+          export RHODS_DASHBOARD_URL
+
+          oc create secret generic demo-lightgbm-workbench-oauth-config --from-literal=cookie_secret=$cookie_secret ||:
+          envsubst '${LIGHTGBM_TAG},${RHODS_DASHBOARD_URL}' < /mnt/cm/notebook.yml | oc apply -f-
+        volumeMounts:
+        - name: lightgbm-notebook-instance
+          mountPath: /mnt/cm
+      volumes:
+      - name: lightgbm-notebook-instance
+        configMap:
+          name: lightgbm-notebook-instance
+      restartPolicy: Never
