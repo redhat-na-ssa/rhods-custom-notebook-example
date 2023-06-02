@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-lightgbm-workbench-oauth-config
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"

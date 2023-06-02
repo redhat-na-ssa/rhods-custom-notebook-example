@@ -19,3 +19,5 @@ resources:
 - services.yml # oauth (with service cert annotations) and workbench
 - route.yml
 - create-notebook-job.yml
+- notebook-scaffold.yml
+- oauth-scaffold.yml
