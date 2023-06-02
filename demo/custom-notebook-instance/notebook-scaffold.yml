@@ -1,7 +1,0 @@
-apiVersion: kubeflow.org/v1
-kind: Notebook
-metadata:
-  name: demo-lightgbm-workbench
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "4"
