@@ -22,6 +22,6 @@ spec:
     kind: "Notebook"
     namespace: notebook-demo
     jsonPointers:
-    - /spec/template/spec/containers/1
-    - /spec/template/spec/volumes/2
-    - /spec/template/spec/volumes/3
+    - /spec/template/spec/containers
+    - /spec/template/spec/volumes
+    - /spec/template/spec/volumes
