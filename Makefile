@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .EXPORT_ALL_VARIABLES:
 
-KUBECONFIG = /tmp/mufg
+KUBECONFIG = /tmp/notebook-demo
 
 .PHONY: all
 all: bootstrap

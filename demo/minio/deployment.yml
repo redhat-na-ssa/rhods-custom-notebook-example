@@ -6,7 +6,7 @@ metadata:
   labels:
     app: minio
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   replicas: 1
   selector:
@@ -20,13 +20,13 @@ spec:
         app: minio
     spec:
       containers:
-      - args:
+      - name: minio
+        args:
         - minio server /data --console-address :9090
         command:
         - /bin/bash
         - -c
         image: quay.io/minio/minio:latest
-        name: minio
         envFrom:
         - secretRef:
             name: minio-root-user

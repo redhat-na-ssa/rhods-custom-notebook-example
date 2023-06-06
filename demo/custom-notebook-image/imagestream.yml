@@ -7,7 +7,7 @@ metadata:
       that advanced AI/ML notebooks will use as a base image, with the addition
       of the LightGBM libraries.
     opendatahub.io/notebook-image-name: LightGBM
-    opendatahub.io/notebook-image-url: https://git.jharmison.com/james/mufg.git
+    opendatahub.io/notebook-image-url: https://github.com/redhat-na-ssa/rhods-custom-notebook-example
     argocd.argoproj.io/sync-wave: "2"
   labels:
     opendatahub.io/dashboard: "true"

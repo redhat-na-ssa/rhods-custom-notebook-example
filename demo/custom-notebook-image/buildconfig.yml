@@ -15,7 +15,7 @@ spec:
           name: s2i-generic-data-science-notebook:2023.1
   source:
     git:
-      uri: https://git.jharmison.com/james/mufg.git
+      uri: https://github.com/redhat-na-ssa/rhods-custom-notebook-example.git
     contextDir: demo/custom-notebook-image
   strategy:
     dockerStrategy:

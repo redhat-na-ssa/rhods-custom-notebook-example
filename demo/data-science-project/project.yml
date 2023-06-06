@@ -1,0 +1,14 @@
+---
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: Project created to demonstrate custom notebook images
+      and notebook instances.
+    openshift.io/display-name: Notebook Demo
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    kubernetes.io/metadata.name: notebook-demo
+    modelmesh-enabled: "true"
+    opendatahub.io/dashboard: "true"
+  name: notebook-demo

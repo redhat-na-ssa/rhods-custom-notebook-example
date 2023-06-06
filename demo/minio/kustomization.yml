@@ -7,15 +7,11 @@ namespace: minio
 commonLabels:
   component: minio
 
-secretGenerator:
-- name: minio-root-user
-  literals:
-  - MINIO_ROOT_USER=admin
-  - MINIO_ROOT_PASSWORD=HvA3zAzZd5gLw2E-CRQYPlWaWnK7vy7n
-
 resources:
 - namespace.yml
 - pvc.yml
+- serviceaccount.yml
+- create-root-user-job.yml
 - deployment.yml
 - service.yml
 - route.yml
