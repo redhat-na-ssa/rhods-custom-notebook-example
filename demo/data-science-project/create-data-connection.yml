@@ -20,7 +20,7 @@ spec:
         - -ec
         - |-
           echo -n "Waiting for minio-root-user."
-          while [ -n "$(oc get secret -n minio minio-root-user -oname 2>/dev/null)" ]; do
+          while [ -z "$(oc get secret -n minio minio-root-user -oname 2>/dev/null)" ]; do
             echo -n '.'
             sleep 1
           done; echo
