@@ -10,3 +10,4 @@ commonLabels:
 resources:
 - project.yml
 - setup-serviceaccount.yml
+- create-data-connection.yml
