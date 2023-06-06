@@ -7,6 +7,7 @@ metadata:
     notebooks.opendatahub.io/last-size-selection: Small
     openshift.io/description: ""
     openshift.io/display-name: Demo LightGBM Workbench
+    argocd.argoproj.io/sync-wave: "4"
   labels:
     app: demo-lightgbm-workbench
     opendatahub.io/dashboard: "true"
