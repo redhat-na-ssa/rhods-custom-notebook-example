@@ -17,14 +17,15 @@ spec:
         imagePullPolicy: IfNotPresent
         command: ["/bin/bash"]
         args:
-        - -liec
+        - -ec
         - |-
           echo -n "Waiting for minio-root-user."
           while [ -z "$(oc get secret -n minio minio-root-user -oname 2>/dev/null)" ]; do
             echo -n '.'
             sleep 1
           done; echo
-          read -r id secret < <(oc get secret -n minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_USER|base64decode}} {{.data.MINIO_ROOT_PASSWORD|base64decode}}')
+          id=$(oc get secret -n minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_USER|base64decode}}')
+          secret=$(oc get secret -n minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
           echo "Creating secret for ${id}"
           cat << EOF | oc apply -f-
           apiVersion: v1
