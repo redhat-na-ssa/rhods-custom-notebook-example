@@ -4,7 +4,7 @@ metadata:
   annotations:
     openshift.io/description: ""
     openshift.io/display-name: Demo LightGBM Workbench
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "4"
   labels:
     opendatahub.io/dashboard: "true"
   name: demo-lightgbm-workbench
